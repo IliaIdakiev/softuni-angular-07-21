@@ -1,0 +1,20 @@
+<div>
+  HEADER
+
+  <app-time></app-time>
+</div>
+
+<div id="content">
+  <input #searchInput [class.hidden]="!users" type="text">
+  <div class="error" *ngIf="errorLoadingUsers">Error loading users! Check your connection!</div>
+  <div *ngIf="users">
+    <button (click)="reloadButtonHandler()">Reload</button>
+    <button (click)="searchButtonHandler(searchInput)">Search</button>
+    <app-user-list [userArray]="users"></app-user-list>
+  </div>
+  <div *ngIf="!users">Loading...</div>
+</div>
+
+<div>
+  FOOTER
+</div>
