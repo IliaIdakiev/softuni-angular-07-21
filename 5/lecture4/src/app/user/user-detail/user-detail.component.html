@@ -1,0 +1,6 @@
+<div *ngIf="user">
+  <div>{{user.address.city}}</div>
+  <button [routerLink]="['/user-detail', user.id + 1]">Next</button>
+</div>
+<app-loader *ngIf="!user"></app-loader>
+<button type="button" routerLink="/user-list">Back to user list</button>
