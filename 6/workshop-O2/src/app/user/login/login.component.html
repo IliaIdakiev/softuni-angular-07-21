@@ -1,0 +1,46 @@
+<div class="container">
+  <form class="login" action="" method="post">
+
+    <fieldset>
+      <h2>Login Form</h2>
+
+      <p class="field field-icon">
+        <label for="email">
+          <span>
+            <fa-icon [icon]="icons.faEnvelope"></fa-icon>
+          </span>
+        </label>
+        <input #emailInput class="input-error" type="email" name="email" id="email" placeholder="john.doe@gmail.com">
+      </p>
+      <!-- <p class="error">
+        Email is required!
+      </p> -->
+      <!-- <p class="error">
+              Email is not valid!
+          </p> -->
+
+      <p class="field field-icon">
+        <label for="password">
+          <span>
+            <fa-icon [icon]="icons.faLock"></fa-icon>
+          </span>
+        </label>
+        <input #passwordInput type="password" name="password" id="password" placeholder="******">
+      </p>
+      <!-- <p class="error">
+              Password is required!
+          </p>
+          <p class="error">
+              Password must be at least 4 characters!
+          </p> -->
+
+      <button (click)="login(emailInput.value, passwordInput.value)">Login</button>
+
+      <p class="text-center">
+        Have an account?
+        <a href="#">Register</a>
+      </p>
+
+    </fieldset>
+  </form>
+</div>
