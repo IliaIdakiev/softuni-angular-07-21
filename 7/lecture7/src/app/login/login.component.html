@@ -1,0 +1,33 @@
+{{form.invalid}}
+<form #form="ngForm" (ngSubmit)="loginHandler(form)">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email" #emailInput="ngModel" ngModel required email>
+    <ul *ngIf="emailInput.invalid && emailInput.touched" class="errors">
+      <li *ngIf="emailInput.errors?.required">Email is required</li>
+      <li *ngIf="emailInput.errors?.email">Email is invalid</li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" #passwordInput="ngModel" ngModel required [minlength]="6">
+    <ul *ngIf="passwordInput.invalid && passwordInput.touched" class="errors">
+      <li *ngIf="passwordInput.errors?.required">Password is required</li>
+      <li *ngIf="passwordInput.errors?.minlength">Password should be more than 6 characters</li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label for="repeat-password">Repeat password</label>
+    <input type="password" name="repeatPassword" id="repeat-password" #repeatPasswordInput="ngModel" ngModel
+      appSameValue="password" required [minlength]="6">
+    <ul *ngIf="repeatPasswordInput.invalid && repeatPasswordInput.touched" class="errors">
+      <li *ngIf="repeatPasswordInput.errors?.required">Repeat password is required</li>
+      <li *ngIf="repeatPasswordInput.errors?.minlength">Repeat password should be more than 6 characters</li>
+      <li *ngIf="repeatPasswordInput.errors?.sameValue">Password and repeat password don't match. Password value:
+        {{repeatPasswordInput.errors!.sameValue.password}} and repeat password value is: Password value:
+        {{repeatPasswordInput.errors!.sameValue.repeatPassword}}
+      </li>
+    </ul>
+  </div>
+  <button>Login</button>
+</form>
