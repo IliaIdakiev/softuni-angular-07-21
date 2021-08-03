@@ -1,0 +1,10 @@
+<input #searchInput [class.hidden]="!users" type="text">
+<div class="error" *ngIf="errorLoadingUsers">Error loading users! Check your connection!</div>
+<div *ngIf="users">
+  <button (click)="reloadButtonHandler()">Reload</button>
+  <button (click)="searchButtonHandler(searchInput)">Search</button>
+  <div id="container">
+    <app-user-list-item *ngFor="let user of users" [user]="user"></app-user-list-item>
+  </div>
+</div>
+<app-loader *ngIf="!users"></app-loader>
