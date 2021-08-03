@@ -5,7 +5,7 @@ import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   {
-    path: 'user-list',
+    path: 'list',
     component: UserListComponent
   },
   // {
@@ -19,7 +19,7 @@ const routes: Routes = [
   //   }
   // },
   {
-    path: 'user-detail/:id',
+    path: 'detail/:id',
     component: UserDetailComponent,
     canActivate: [ParamsActivate],
     data: {

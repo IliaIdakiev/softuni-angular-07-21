@@ -1,24 +1,18 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RegisterComponent } from './register/register.component';
-import { UserDetailComponent } from './user/user-detail/user-detail.component';
-import { UserListComponent } from './user/user-list/user-list.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/user-list'
+    redirectTo: '/about'
   },
   {
-    path: 'user-list',
-    component: UserListComponent
-  },
-  {
-    path: 'user-detail',
-    component: UserDetailComponent,
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   },
   {
     path: 'about',
@@ -38,4 +32,6 @@ const routes: Routes = [
   }
 ];
 
-export const AppRoutingModule = RouterModule.forRoot(routes);
+export const AppRoutingModule = RouterModule.forRoot(routes, {
+  preloadingStrategy: PreloadAllModules
+});
