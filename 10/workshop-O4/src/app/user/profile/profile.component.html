@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="profile"><img src="/assets/profile.png" alt="default user">
+    <h3>User Info:</h3>
+    <ng-container *ngIf="inUpdateMode">
+      <form #form="ngForm" (ngSubmit)="updateProfile(form)">
+        <div class="flex">
+          <p>Username: </p>
+          <input type="text" name="username" id="username" [ngModel]="user!.username">
+        </div>
+        <div class="flex">
+          <p>Email: </p>
+          <input type="email" name="email" id="email" [ngModel]="user!.email">
+        </div>
+        <div class="flex">
+          <p>Phone: </p>
+          <div>
+            <select name="select-tel" id="select-tel" class="tel">
+              <option value="00359">+359</option>
+            </select>
+            <input type="text" name="tel" id="tel" [ngModel]="user!.tel">
+          </div>
+        </div>
+        <button type="button" class="red-button" (click)="inUpdateMode = false">Cancel</button>
+        <button class="green-button">Save</button>
+      </form>
+    </ng-container>
+    <ng-container>
+      <div class="flex">
+        <p>Username: </p>
+        <p>{{user!.username}}</p>
+      </div>
+      <div class="flex">
+        <p>Email: </p>
+        <p>{{user!.email}}</p>
+      </div>
+      <div class="flex">
+        <p>Phone: </p>
+        <p>{{user!.tel}}</p>
+      </div>
+      <button (click)="inUpdateMode = true" class="edit-button">Edit</button>
+    </ng-container>
+  </div>
+</div>
