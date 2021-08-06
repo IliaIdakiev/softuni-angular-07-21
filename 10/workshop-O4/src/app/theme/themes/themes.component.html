@@ -3,14 +3,14 @@
   <main>
     <div class="theme-title" *ngIf="themes">
       <div *ngFor="let theme of themes" class="theme-container">
-        <div class="theme-name-wrapper" [routerLink]="['/themes', theme._id]">
+        <div class="theme-name-wrapper" [routerLink]="['/theme', theme._id]">
           <div class="theme-name">
             <a class="normal">
-              <h2>{{theme.themeName}}</h2>
+              <h2>{{theme.themeName | shorten : 10}}</h2>
             </a>
             <div class="columns">
               <div>
-                <p>Date: <time>{{theme.created_at}}</time></p>
+                <p>Date: <time>{{theme.created_at | timeDiff}}</time></p>
                 <div class="nick-name">
                   <p>Username: <span>{{theme.userId.username}}</span></p>
                 </div>
@@ -29,9 +29,9 @@
 
   <ng-template #recentPostTemplate let-item let-index="index">
     <a href="#">
-      <h3>{{item.themeId.themeName}}</h3>
+      <h3>{{item.themeId.themeName | shorten : 10}}</h3>
       <p>{{item.userId.username}}</p>
-      <p><span>{{item.created_at}}</span></p>
+      <p><span>{{item.created_at | timeDiff}}</span></p>
     </a>
   </ng-template>
 

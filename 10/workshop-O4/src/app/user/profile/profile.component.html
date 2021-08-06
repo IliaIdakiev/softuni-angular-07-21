@@ -1,4 +1,5 @@
-<div class="container">
+<div *ngIf="isLoading">Loading...</div>
+<div *ngIf="!isLoading" class="container">
   <div class="profile"><img src="/assets/profile.png" alt="default user">
     <h3>User Info:</h3>
     <ng-container *ngIf="inUpdateMode">

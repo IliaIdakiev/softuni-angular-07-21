@@ -7,21 +7,16 @@ import { ThemesComponent } from './themes/themes.component';
 
 const routes: Routes = [
   {
-    path: 'themes',
-    children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        component: ThemesComponent
-      },
-      {
-        path: ':themeId',
-        component: ThemeComponent
-      }
-    ]
+    path: '',
+    pathMatch: 'full',
+    component: ThemesComponent
   },
   {
-    path: 'add-theme',
+    path: ':themeId',
+    component: ThemeComponent
+  },
+  {
+    path: 'add',
     component: NewThemeComponent,
     canActivate: [AuthActivate],
     data: {

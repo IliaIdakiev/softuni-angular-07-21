@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ContentService } from 'src/app/content.service';
+import { ContentService } from 'src/app/core/services/content.service';
 
 @Component({
   selector: 'softuni-new-theme',
